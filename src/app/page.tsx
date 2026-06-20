@@ -19,28 +19,26 @@ import {
   MapPin,
   Phone
 } from "lucide-react";
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
 
 const basePath = process.env.NODE_ENV === "production" ? "/rj-fitness" : "";
 
 export default function Home() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
+  useEffect(() => {
+    // Scroll to hash on load
+    if (typeof window !== "undefined" && window.location.hash) {
+      const id = window.location.hash.substring(1);
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 300);
+    }
+  }, []);
 
-  // Parallax effects
-  const heroY = useTransform(scrollYProgress, [0, 0.2], ["0%", "40%"]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
-  
-  const aboutY = useTransform(scrollYProgress, [0.1, 0.3], ["10%", "0%"]);
-  const aboutOpacity = useTransform(scrollYProgress, [0.15, 0.3], [0, 1]);
-
-  const programsY = useTransform(scrollYProgress, [0.25, 0.45], ["10%", "0%"]);
-  
   const handleQuickSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
@@ -109,16 +107,15 @@ export default function Home() {
       glow: "group-hover:shadow-[0_0_30px_rgba(244,114,182,0.2)]"
     }
   ];
-
   return (
-    <main ref={containerRef} className="bg-background text-foreground overflow-x-hidden">
+    <main className="bg-background text-foreground overflow-x-hidden">
       <Navbar />
       
-      {/* 1. Hero Section (Parallax Background) */}
+      {/* 1. Hero Section Background */}
       <section className="relative h-screen flex items-center justify-center pt-20 overflow-hidden bg-black">
-        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="absolute inset-0 w-full h-full z-0">
+        <div className="absolute inset-0 w-full h-full z-0">
           <HeroCarousel />
-        </motion.div>
+        </div>
         
         <div className="container mx-auto px-6 max-w-7xl grid lg:grid-cols-2 gap-12 items-center z-10 relative mt-16 md:mt-0">
           <motion.div 
@@ -170,7 +167,10 @@ export default function Home() {
       {/* 2. About Us Section */}
       <section id="about" className="py-32 relative z-20 bg-background min-h-[80vh] flex items-center">
         <motion.div 
-          style={{ y: aboutY, opacity: aboutOpacity }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.8 }}
           className="container mx-auto px-6 max-w-7xl"
         >
           <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -228,7 +228,10 @@ export default function Home() {
       {/* 3. Programs Section */}
       <section id="programs" className="py-32 relative z-20 bg-surface">
         <motion.div 
-          style={{ y: programsY }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.8 }}
           className="container mx-auto px-6 max-w-7xl"
         >
           <div className="text-center mb-20">

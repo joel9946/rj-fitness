@@ -4,10 +4,13 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Dumbbell, User, Menu, X } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,6 +19,27 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleNavClick = (id: string, e: React.MouseEvent) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
+  const handleMobileNavClick = (id: string, e: React.MouseEvent) => {
+    setMobileOpen(false);
+    if (pathname === "/") {
+      e.preventDefault();
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
 
   return (
     <motion.nav
@@ -40,9 +64,9 @@ export default function Navbar() {
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide uppercase">
           <Link href="/" className="hover:text-primary transition-colors">Home</Link>
-          <Link href="/#about" className="hover:text-primary transition-colors">About Us</Link>
-          <Link href="/#programs" className="hover:text-primary transition-colors">Programs</Link>
-          <Link href="/#memberships" className="hover:text-primary transition-colors">Memberships</Link>
+          <Link href="/#about" onClick={(e) => handleNavClick("about", e)} className="hover:text-primary transition-colors">About Us</Link>
+          <Link href="/#programs" onClick={(e) => handleNavClick("programs", e)} className="hover:text-primary transition-colors">Programs</Link>
+          <Link href="/#memberships" onClick={(e) => handleNavClick("memberships", e)} className="hover:text-primary transition-colors">Memberships</Link>
           <Link href="/gallery" className="hover:text-primary transition-colors">Gallery</Link>
           <Link href="/contact" className="hover:text-primary transition-colors">Contact</Link>
         </div>
@@ -74,9 +98,9 @@ export default function Navbar() {
             className="md:hidden absolute top-full left-0 w-full bg-black/95 backdrop-blur-3xl border-b border-white/5 overflow-hidden flex flex-col items-center justify-start pt-12 gap-8 z-50"
           >
             <Link href="/" onClick={() => setMobileOpen(false)} className="text-2xl font-bold hover:text-primary transition-colors">Home</Link>
-            <Link href="/#about" onClick={() => setMobileOpen(false)} className="text-2xl font-bold hover:text-primary transition-colors">About Us</Link>
-            <Link href="/#programs" onClick={() => setMobileOpen(false)} className="text-2xl font-bold hover:text-primary transition-colors">Programs</Link>
-            <Link href="/#memberships" onClick={() => setMobileOpen(false)} className="text-2xl font-bold hover:text-primary transition-colors">Memberships</Link>
+            <Link href="/#about" onClick={(e) => handleMobileNavClick("about", e)} className="text-2xl font-bold hover:text-primary transition-colors">About Us</Link>
+            <Link href="/#programs" onClick={(e) => handleMobileNavClick("programs", e)} className="text-2xl font-bold hover:text-primary transition-colors">Programs</Link>
+            <Link href="/#memberships" onClick={(e) => handleMobileNavClick("memberships", e)} className="text-2xl font-bold hover:text-primary transition-colors">Memberships</Link>
             <Link href="/gallery" onClick={() => setMobileOpen(false)} className="text-2xl font-bold hover:text-primary transition-colors">Gallery</Link>
             <Link href="/contact" onClick={() => setMobileOpen(false)} className="text-2xl font-bold hover:text-primary transition-colors">Contact</Link>
             
