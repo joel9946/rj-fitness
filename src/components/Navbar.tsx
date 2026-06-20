@@ -41,6 +41,15 @@ export default function Navbar() {
     }
   };
 
+  const handleHomeClick = (e: React.MouseEvent) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  const basePath = process.env.NODE_ENV === 'production' ? '/rj-fitness' : '';
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -50,23 +59,51 @@ export default function Navbar() {
       }`}
     >
       <div className="container mx-auto px-6 max-w-7xl flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3 group">
+        <a 
+          href={`${basePath}/`} 
+          onClick={handleHomeClick} 
+          className="flex items-center gap-3 group cursor-pointer"
+        >
           <div className="relative h-10 w-10 rounded-full overflow-hidden border border-primary/40 group-hover:scale-110 transition-transform duration-300 bg-surface">
             <img 
-              src={`${process.env.NODE_ENV === 'production' ? '/rj-fitness' : ''}/images/WhatsApp Image 2026-06-20 at 1.17.33 PM.jpeg`} 
+              src={`${basePath}/images/WhatsApp Image 2026-06-20 at 1.17.33 PM.jpeg`} 
               alt="RJ Fitness Logo" 
               className="object-cover w-full h-full"
             />
           </div>
           <span className="text-xl font-black tracking-tighter text-glow-primary text-primary">RJ FITNESS</span>
-        </Link>
+        </a>
         
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide uppercase">
-          <Link href="/" className="hover:text-primary transition-colors">Home</Link>
-          <Link href="/#about" onClick={(e) => handleNavClick("about", e)} className="hover:text-primary transition-colors">About Us</Link>
-          <Link href="/#programs" onClick={(e) => handleNavClick("programs", e)} className="hover:text-primary transition-colors">Programs</Link>
-          <Link href="/#memberships" onClick={(e) => handleNavClick("memberships", e)} className="hover:text-primary transition-colors">Memberships</Link>
+          <a 
+            href={`${basePath}/`} 
+            onClick={handleHomeClick} 
+            className="hover:text-primary transition-colors cursor-pointer"
+          >
+            Home
+          </a>
+          <a 
+            href={`${basePath}/#about`} 
+            onClick={(e) => handleNavClick("about", e)} 
+            className="hover:text-primary transition-colors cursor-pointer"
+          >
+            About Us
+          </a>
+          <a 
+            href={`${basePath}/#programs`} 
+            onClick={(e) => handleNavClick("programs", e)} 
+            className="hover:text-primary transition-colors cursor-pointer"
+          >
+            Programs
+          </a>
+          <a 
+            href={`${basePath}/#memberships`} 
+            onClick={(e) => handleNavClick("memberships", e)} 
+            className="hover:text-primary transition-colors cursor-pointer"
+          >
+            Memberships
+          </a>
           <Link href="/gallery" className="hover:text-primary transition-colors">Gallery</Link>
           <Link href="/contact" className="hover:text-primary transition-colors">Contact</Link>
         </div>
@@ -97,10 +134,34 @@ export default function Navbar() {
             transition={{ duration: 0.3 }}
             className="md:hidden absolute top-full left-0 w-full bg-black/95 backdrop-blur-3xl border-b border-white/5 overflow-hidden flex flex-col items-center justify-start pt-12 gap-8 z-50"
           >
-            <Link href="/" onClick={() => setMobileOpen(false)} className="text-2xl font-bold hover:text-primary transition-colors">Home</Link>
-            <Link href="/#about" onClick={(e) => handleMobileNavClick("about", e)} className="text-2xl font-bold hover:text-primary transition-colors">About Us</Link>
-            <Link href="/#programs" onClick={(e) => handleMobileNavClick("programs", e)} className="text-2xl font-bold hover:text-primary transition-colors">Programs</Link>
-            <Link href="/#memberships" onClick={(e) => handleMobileNavClick("memberships", e)} className="text-2xl font-bold hover:text-primary transition-colors">Memberships</Link>
+            <a 
+              href={`${basePath}/`} 
+              onClick={(e) => { setMobileOpen(false); handleHomeClick(e); }} 
+              className="text-2xl font-bold hover:text-primary transition-colors cursor-pointer"
+            >
+              Home
+            </a>
+            <a 
+              href={`${basePath}/#about`} 
+              onClick={(e) => handleMobileNavClick("about", e)} 
+              className="text-2xl font-bold hover:text-primary transition-colors cursor-pointer"
+            >
+              About Us
+            </a>
+            <a 
+              href={`${basePath}/#programs`} 
+              onClick={(e) => handleMobileNavClick("programs", e)} 
+              className="text-2xl font-bold hover:text-primary transition-colors cursor-pointer"
+            >
+              Programs
+            </a>
+            <a 
+              href={`${basePath}/#memberships`} 
+              onClick={(e) => handleMobileNavClick("memberships", e)} 
+              className="text-2xl font-bold hover:text-primary transition-colors cursor-pointer"
+            >
+              Memberships
+            </a>
             <Link href="/gallery" onClick={() => setMobileOpen(false)} className="text-2xl font-bold hover:text-primary transition-colors">Gallery</Link>
             <Link href="/contact" onClick={() => setMobileOpen(false)} className="text-2xl font-bold hover:text-primary transition-colors">Contact</Link>
             
