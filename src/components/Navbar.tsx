@@ -29,7 +29,7 @@ export default function Navbar() {
         <Link href="/" className="flex items-center gap-3 group">
           <div className="relative h-10 w-10 rounded-full overflow-hidden border border-primary/40 group-hover:scale-110 transition-transform duration-300 bg-surface">
             <img 
-              src="/images/WhatsApp Image 2026-06-20 at 1.17.33 PM.jpeg" 
+              src={`${process.env.NODE_ENV === 'production' ? '/rj-fitness' : ''}/images/WhatsApp Image 2026-06-20 at 1.17.33 PM.jpeg`} 
               alt="RJ Fitness Logo" 
               className="object-cover w-full h-full"
             />

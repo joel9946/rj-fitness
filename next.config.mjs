@@ -1,5 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
+  images: {
+    unoptimized: true,
+  },
+  basePath: '/rj-fitness',
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {

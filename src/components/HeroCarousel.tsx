@@ -20,7 +20,8 @@ export default function HeroCarousel() {
   // e.g. 0 -> "000", 12 -> "012"
   const getImageUrl = (index: number) => {
     const paddedIndex = index.toString().padStart(3, '0');
-    return `/hero/Whisk_qjmkvdmyity4mdzm1cmhzwytctnxqtlwidz50im_${paddedIndex}.jpg`;
+    const basePath = process.env.NODE_ENV === 'production' ? '/rj-fitness' : '';
+    return `${basePath}/hero/Whisk_qjmkvdmyity4mdzm1cmhzwytctnxqtlwidz50im_${paddedIndex}.jpg`;
   };
 
   return (

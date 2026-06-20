@@ -130,6 +130,8 @@ const GALLERY_IMAGES: GalleryImage[] = [
 
 type CategoryFilter = "All" | "Strength Zone" | "Cardio Studio" | "CrossFit Arena" | "Amenities";
 
+const basePath = process.env.NODE_ENV === 'production' ? '/rj-fitness' : '';
+
 export default function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState<CategoryFilter>("All");
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
@@ -253,7 +255,7 @@ export default function GalleryPage() {
                   className="group relative aspect-[4/3] rounded-3xl overflow-hidden border border-white/10 bg-surface shadow-lg hover:shadow-2xl cursor-pointer hover:border-primary/50 transition-all duration-300"
                 >
                   <img
-                    src={img.url}
+                    src={`${basePath}${img.url}`}
                     alt={img.title}
                     className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
                   />
@@ -324,7 +326,7 @@ export default function GalleryPage() {
                 className="w-full h-full relative rounded-3xl overflow-hidden border border-white/10 bg-surface flex items-center justify-center"
               >
                 <img
-                  src={filteredImages[selectedImageIndex].url}
+                  src={`${basePath}${filteredImages[selectedImageIndex].url}`}
                   alt={filteredImages[selectedImageIndex].title}
                   className="w-full h-full object-contain"
                 />

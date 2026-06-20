@@ -23,6 +23,8 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 
+const basePath = process.env.NODE_ENV === "production" ? "/rj-fitness" : "";
+
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -200,7 +202,7 @@ export default function Home() {
               <div className="aspect-square rounded-3xl bg-surface border border-white/5 overflow-hidden relative shadow-2xl glass-panel flex items-center justify-center group pl-8">
                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
                  <motion.img 
-                   src="/images/cyber_kettlebell.png" 
+                   src={`${basePath}/images/cyber_kettlebell.png`} 
                    alt="RJ Fitness Strength Kettlebell"
                    className="w-[85%] h-[85%] object-contain relative z-10 drop-shadow-[0_0_40px_rgba(255,49,49,0.5)]"
                    animate={{ 
@@ -333,7 +335,7 @@ export default function Home() {
                ].map((imgUrl, i) => (
                   <div key={i} className="group relative aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 bg-black">
                      <img 
-                       src={imgUrl} 
+                       src={`${basePath}${imgUrl}`} 
                        alt="RJ Fitness interior preview" 
                        className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500 opacity-80 group-hover:opacity-100"
                      />
