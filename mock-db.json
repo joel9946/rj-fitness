@@ -1,0 +1,74 @@
+{
+  "members": [
+    {
+      "id": "admin-uuid-1111-2222-333333333333",
+      "full_name": "Aura Admin",
+      "email": "admin@aura.fit",
+      "membership_status": "paid",
+      "membership_plan": "elite",
+      "membership_start_date": "2026-06-01T00:00:00.000Z",
+      "membership_end_date": "2026-07-19T00:00:00.000Z",
+      "is_admin": true,
+      "created_at": "2026-06-01T00:00:00.000Z"
+    },
+    {
+      "id": "user-uuid-1111-2222-333333333333",
+      "full_name": "John Doe",
+      "email": "john@example.com",
+      "membership_status": "unpaid",
+      "membership_plan": "standard",
+      "membership_start_date": null,
+      "membership_end_date": null,
+      "is_admin": false,
+      "created_at": "2026-06-15T00:00:00.000Z"
+    },
+    {
+      "id": "mock-uuid-p5hgbsl8p-t62kja85m",
+      "full_name": "Demo Athlete",
+      "email": "demo_user@aura.fit",
+      "membership_status": "unpaid",
+      "membership_plan": "standard",
+      "membership_start_date": null,
+      "membership_end_date": null,
+      "is_admin": false,
+      "created_at": "2026-06-19T11:37:53.786Z"
+    },
+    {
+      "id": "mock-uuid-me3da1kks-gfn04aq3s",
+      "full_name": "Demo Athlete 1781869150524",
+      "email": "demo_user_1781869150524@aura.fit",
+      "membership_status": "paid",
+      "membership_plan": "standard",
+      "membership_start_date": "2026-06-19T11:39:11.764Z",
+      "membership_end_date": "2026-07-19T11:39:11.764Z",
+      "is_admin": false,
+      "created_at": "2026-06-19T11:39:10.625Z"
+    }
+  ],
+  "users": [
+    {
+      "id": "admin-uuid-1111-2222-333333333333",
+      "email": "admin@aura.fit",
+      "password": "adminpassword",
+      "full_name": "Aura Admin"
+    },
+    {
+      "id": "user-uuid-1111-2222-333333333333",
+      "email": "john@example.com",
+      "password": "password123",
+      "full_name": "John Doe"
+    },
+    {
+      "id": "mock-uuid-p5hgbsl8p-t62kja85m",
+      "email": "demo_user@aura.fit",
+      "password": "demopassword",
+      "full_name": "Demo Athlete"
+    },
+    {
+      "id": "mock-uuid-me3da1kks-gfn04aq3s",
+      "email": "demo_user_1781869150524@aura.fit",
+      "password": "demopassword",
+      "full_name": "Demo Athlete 1781869150524"
+    }
+  ]
+}
