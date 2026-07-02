@@ -9,7 +9,7 @@ export default function HeroCarousel() {
 
   const getImageUrl = (index: number) => {
     const paddedIndex = index.toString().padStart(3, '0');
-    const basePath = process.env.NODE_ENV === 'production' ? '/rj-fitness' : '';
+    const basePath = '';
     return `${basePath}/hero/Whisk_qjmkvdmyity4mdzm1cmhzwytctnxqtlwidz50im_${paddedIndex}.jpg`;
   };
 

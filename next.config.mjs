@@ -5,7 +5,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: '/rj-fitness',
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {

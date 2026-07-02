@@ -23,7 +23,7 @@ import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-const basePath = process.env.NODE_ENV === "production" ? "/rj-fitness" : "";
+const basePath = "";
 
 export default function Home() {
   useEffect(() => {
@@ -44,7 +44,7 @@ export default function Home() {
     const data = new FormData(e.currentTarget);
     const name = data.get("name") as string;
     const phone = data.get("phone") as string;
-    const message = `Hello RJ Fitness Kuttanad! I am interested in joining the gym.\n\nHere are my details:\nName: ${name}\nPhone: ${phone}`;
+    const message = `🏋️‍♂️ *RJ FITNESS KUTTANAD* 🏋️‍♂️\n*QUICK CONTACT ENQUIRY*\n\nHello! I am interested in joining the gym. Here are my contact details:\n\n👤 *Name:* ${name}\n📞 *Phone:* ${phone}\n\n---\n_Sent via RJ Fitness Website_`;
     window.open(`https://wa.me/917356914004?text=${encodeURIComponent(message)}`, "_blank");
   };
 
@@ -226,7 +226,13 @@ export default function Home() {
       </section>
 
       {/* 3. Programs Section */}
-      <section id="programs" className="py-32 relative z-20 bg-surface">
+      <section 
+        id="programs" 
+        className="py-32 relative z-20 overflow-hidden bg-cover bg-center bg-no-repeat"
+        style={{ 
+          backgroundImage: `linear-gradient(to bottom, rgba(18, 18, 18, 0.92), rgba(18, 18, 18, 0.92)), url('${basePath}/background images/corey-young-JRrlaZpd7F4-unsplash.jpg')`
+        }}
+      >
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -259,7 +265,13 @@ export default function Home() {
       </section>
 
       {/* 4. Memberships Section */}
-      <section id="memberships" className="py-32 bg-background relative z-20">
+      <section 
+        id="memberships" 
+        className="py-32 relative z-20 overflow-hidden bg-cover bg-center bg-no-repeat"
+        style={{ 
+          backgroundImage: `linear-gradient(to bottom, rgba(10, 10, 10, 0.93), rgba(10, 10, 10, 0.93)), url('${basePath}/background images/crossfit-ropes.webp')`
+        }}
+      >
          <div className="container mx-auto px-6 max-w-7xl text-center">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -267,52 +279,111 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6">
-                CLAIM YOUR <span className="text-primary text-glow-primary">TIER</span>
+              <h2 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-4">
+                CHOOSE YOUR <span className="text-primary text-glow-primary">PLAN</span>
               </h2>
-              <p className="text-gray-400 max-w-2xl mx-auto text-xl mb-16">
-                Flexible memberships for standard strength or all-inclusive group classes.
+              <p className="text-gray-400 max-w-2xl mx-auto text-xl mb-6">
+                Select from our flexible student passes, standard adult packages, or personal training programs.
               </p>
               
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                {/* Standard */}
-                <div className="glass-panel p-8 rounded-3xl border border-white/5 text-left hover:-translate-y-2 transition-transform duration-300">
-                  <h3 className="text-2xl font-bold mb-2">RJ Core</h3>
-                  <div className="text-4xl font-black mb-6">₹1,999<span className="text-lg text-gray-400 font-medium">/mo</span></div>
-                  <ul className="space-y-4 mb-8 text-gray-400">
-                    <li className="flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-accent"/> Full Gym Floor Access</li>
-                    <li className="flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-accent"/> Standard Cardio & Strength</li>
-                    <li className="flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-accent"/> Locker Room Usage</li>
-                    <li className="flex items-center gap-3 opacity-50"><CheckCircle2 className="w-5 h-5"/> Group Classes Excluded</li>
-                  </ul>
-                  <Link href="/contact?program=Adult%20Sports" className="block w-full text-center py-4 rounded-full font-bold bg-white/5 hover:bg-white/10 transition-colors uppercase tracking-wider text-xs">Inquire Now</Link>
+              {/* Registration Fee Badge */}
+              <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full glass-panel border-accent/20 mb-12 text-accent font-extrabold text-sm uppercase tracking-wider shadow-[0_0_15px_rgba(0,229,255,0.1)]">
+                <span className="animate-pulse text-red-500">⚡</span> One-time Registration Fee: ₹1,000
+              </div>
+              
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
+                {/* Card 1: Student Pass */}
+                <div className="glass-panel p-8 rounded-3xl border border-white/5 text-left hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between">
+                  <div>
+                    <div className="text-accent font-extrabold text-xs uppercase tracking-widest mb-2">Academic Special</div>
+                    <h3 className="text-2xl font-black mb-4 text-white">Student Pass</h3>
+                    <p className="text-gray-400 text-sm mb-6 leading-relaxed">Discounted monthly rates for young athletes and active students.</p>
+                    
+                    <div className="space-y-4 border-t border-white/5 pt-6 mb-8">
+                      <div>
+                        <div className="text-xs uppercase font-extrabold tracking-widest text-gray-500 mb-1">Under 18 Years</div>
+                        <div className="text-3xl font-black text-white">₹800<span className="text-base text-gray-400 font-medium">/mo</span></div>
+                      </div>
+                      <div>
+                        <div className="text-xs uppercase font-extrabold tracking-widest text-gray-500 mb-1">18 Years & Above</div>
+                        <div className="text-3xl font-black text-white">₹900<span className="text-base text-gray-400 font-medium">/mo</span></div>
+                      </div>
+                    </div>
+
+                    <ul className="space-y-3.5 mb-8 text-gray-400 text-sm">
+                      <li className="flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0"/> Full Gym Floor Access</li>
+                      <li className="flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0"/> Standard Strength & Cardio</li>
+                      <li className="flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0"/> Gents & Ladies Locker Rooms</li>
+                    </ul>
+                  </div>
+                  
+                  <Link href="/contact?program=Cycling" className="block w-full text-center py-4 rounded-full font-bold bg-white/5 hover:bg-white/10 text-white transition-colors uppercase tracking-wider text-xs">Join Student Club</Link>
                 </div>
 
-                {/* Pro (Highlighted) */}
-                <div className="glass-panel p-8 rounded-3xl border border-primary/50 text-left transform md:-translate-y-4 shadow-[0_0_30px_rgba(255,49,49,0.15)] relative overflow-hidden">
-                  <div className="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-4 py-1 rounded-bl-xl uppercase tracking-wider">Best Value</div>
-                  <h3 className="text-2xl font-bold mb-2 text-primary">RJ Active</h3>
-                  <div className="text-4xl font-black mb-6">₹2,999<span className="text-lg text-gray-400 font-medium">/mo</span></div>
-                  <ul className="space-y-4 mb-8 text-white">
-                    <li className="flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-primary"/> All RJ Core Privileges</li>
-                    <li className="flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-primary"/> All Group Workouts (Zumba, Spin)</li>
-                    <li className="flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-primary"/> CrossFit & Yoga Arenas</li>
-                    <li className="flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-primary"/> Trainer Support on Floor</li>
-                  </ul>
-                  <Link href="/contact?program=Crossfit" className="block w-full text-center py-4 rounded-full font-bold bg-primary hover:bg-red-600 text-white transition-colors shadow-[0_0_15px_rgba(255,49,49,0.3)] uppercase tracking-wider text-xs">Start Trial</Link>
+                {/* Card 2: Standard Adult & Bundles (Highlighted) */}
+                <div className="glass-panel p-8 rounded-3xl border border-primary/50 text-left transform lg:-translate-y-4 shadow-[0_0_35px_rgba(255,49,49,0.15)] relative overflow-hidden flex flex-col justify-between">
+                  <div className="absolute top-0 right-0 bg-primary text-white text-[10px] font-black px-4 py-1.5 rounded-bl-xl uppercase tracking-wider">Most Popular</div>
+                  
+                  <div>
+                    <div className="text-primary font-extrabold text-xs uppercase tracking-widest mb-2">Standard & Bundles</div>
+                    <h3 className="text-2xl font-black mb-4 text-white">Adult Packages</h3>
+                    <p className="text-gray-300 text-sm mb-6 leading-relaxed">Perfect packages for general training with maximum savings on long-term plans.</p>
+                    
+                    <div className="space-y-4 border-t border-white/10 pt-6 mb-8">
+                      <div className="flex justify-between items-end">
+                        <div>
+                          <span className="text-xs uppercase font-extrabold tracking-widest text-gray-400">Monthly Pass</span>
+                          <div className="text-2xl font-black text-white">₹1,000<span className="text-sm text-gray-400 font-medium">/mo</span></div>
+                        </div>
+                        <div className="text-right">
+                          <span className="text-xs uppercase font-extrabold tracking-widest text-primary">3 Months Bundle</span>
+                          <div className="text-2xl font-black text-primary">₹3,500<span className="text-sm font-medium text-gray-400"> total</span></div>
+                        </div>
+                      </div>
+                      <div className="flex justify-between items-end border-t border-white/5 pt-4">
+                        <div>
+                          <span className="text-xs uppercase font-extrabold tracking-widest text-gray-400">6 Months Bundle</span>
+                          <div className="text-2xl font-black text-white">₹6,000<span className="text-sm font-medium text-gray-400"> total</span></div>
+                        </div>
+                        <div className="text-right">
+                          <span className="text-xs uppercase font-extrabold tracking-widest text-accent">1 Year Premium</span>
+                          <div className="text-2xl font-black text-accent">₹10,000<span className="text-sm font-medium text-gray-400"> total</span></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <ul className="space-y-3.5 mb-8 text-gray-300 text-sm">
+                      <li className="flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0"/> All Gym Floor & Rig Access</li>
+                      <li className="flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0"/> Dedicated Ladies & Gents Slots</li>
+                      <li className="flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0"/> Initial assessments & coaching support</li>
+                    </ul>
+                  </div>
+                  
+                  <Link href="/contact?program=Adult%20Sports" className="block w-full text-center py-4 rounded-full font-bold bg-primary hover:bg-red-600 text-white transition-colors shadow-[0_0_15px_rgba(255,49,49,0.3)] uppercase tracking-wider text-xs">Choose Adult Package</Link>
                 </div>
 
-                {/* Elite */}
-                <div className="glass-panel p-8 rounded-3xl border border-white/5 text-left hover:-translate-y-2 transition-transform duration-300">
-                  <h3 className="text-2xl font-bold mb-2">RJ Elite PT</h3>
-                  <div className="text-4xl font-black mb-6">₹5,999<span className="text-lg text-gray-400 font-medium">/mo</span></div>
-                  <ul className="space-y-4 mb-8 text-gray-400">
-                    <li className="flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-accent"/> All RJ Active Privileges</li>
-                    <li className="flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-accent"/> 8 Personal Training Sessions</li>
-                    <li className="flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-accent"/> Nutrition & Diet Coaching</li>
-                    <li className="flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-accent"/> Custom Progress Tracking</li>
-                  </ul>
-                  <Link href="/contact?program=Personal%20Training" className="block w-full text-center py-4 rounded-full font-bold bg-white/5 hover:bg-white/10 transition-colors uppercase tracking-wider text-xs">Inquire Now</Link>
+                {/* Card 3: Personal Training */}
+                <div className="glass-panel p-8 rounded-3xl border border-white/5 text-left hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between">
+                  <div>
+                    <div className="text-accent font-extrabold text-xs uppercase tracking-widest mb-2">VIP Transformation</div>
+                    <h3 className="text-2xl font-black mb-4 text-white">Personal Training</h3>
+                    <p className="text-gray-400 text-sm mb-6 leading-relaxed">Dedicated 1-on-1 certified coaching for custom workouts, diets, and posture guides.</p>
+                    
+                    <div className="space-y-4 border-t border-white/5 pt-6 mb-8">
+                      <div>
+                        <div className="text-xs uppercase font-extrabold tracking-widest text-gray-500 mb-1">Elite 1-on-1 PT</div>
+                        <div className="text-4xl font-black text-white">₹5,500<span className="text-base text-gray-400 font-medium">/mo</span></div>
+                      </div>
+                    </div>
+
+                    <ul className="space-y-3.5 mb-8 text-gray-400 text-sm">
+                      <li className="flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0"/> Dedicated 1-on-1 Coaching</li>
+                      <li className="flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0"/> Custom Diet & Nutrition Planner</li>
+                      <li className="flex items-center gap-3"><CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0"/> Posture & Biomechanical Auditing</li>
+                    </ul>
+                  </div>
+                  
+                  <Link href="/contact?program=Personal%20Training" className="block w-full text-center py-4 rounded-full font-bold bg-white/5 hover:bg-white/10 text-white transition-colors uppercase tracking-wider text-xs">Book Personal Trainer</Link>
                 </div>
               </div>
             </motion.div>

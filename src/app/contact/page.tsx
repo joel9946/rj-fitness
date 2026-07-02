@@ -38,7 +38,7 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const messageText = `Hello RJ Fitness Kuttanad! I would like to reserve a VIP entry.\n\nHere are my details:\nName: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nProgram Interest: ${formData.program}\nGoals/Message: ${formData.message}`;
+    const messageText = `🏋️‍♂️ *RJ FITNESS KUTTANAD* 🏋️‍♂️\n*VIP MEMBERSHIP RESERVATION*\n\nHello! I would like to reserve a VIP entry/consultation. Here are my details:\n\n👤 *Name:* ${formData.name}\n📧 *Email:* ${formData.email}\n📞 *Phone:* ${formData.phone}\n💪 *Program Interest:* ${formData.program}\n💬 *Message/Goals:* ${formData.message}\n\n---\n_Sent via RJ Fitness Website_`;
     
     // Redirect to WhatsApp
     window.open(`https://wa.me/917356914004?text=${encodeURIComponent(messageText)}`, "_blank");

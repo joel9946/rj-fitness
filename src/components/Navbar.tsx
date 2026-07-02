@@ -48,7 +48,7 @@ export default function Navbar() {
     }
   };
 
-  const basePath = process.env.NODE_ENV === 'production' ? '/rj-fitness' : '';
+  const basePath = '';
 
   return (
     <motion.nav

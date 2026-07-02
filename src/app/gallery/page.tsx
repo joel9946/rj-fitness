@@ -130,7 +130,7 @@ const GALLERY_IMAGES: GalleryImage[] = [
 
 type CategoryFilter = "All" | "Strength Zone" | "Cardio Studio" | "CrossFit Arena" | "Amenities";
 
-const basePath = process.env.NODE_ENV === 'production' ? '/rj-fitness' : '';
+const basePath = '';
 
 export default function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState<CategoryFilter>("All");
